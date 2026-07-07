@@ -20,9 +20,9 @@
 // * printSpeed()
 // =================================
 void main() {
-  Duck duck = Duck("Donald", 40, 15);
-  Fish fish = Fish("Nemo", 20);
-  Bird bird = Bird("Parrot", 60);
+  Duck duck = Duck("Ddddddddd", 40, 15);
+  Fish fish = Fish("hhhhhh", 20);
+  Bird bird = Bird("ppppppppp", 60);
 
   print("===== Duck =====");
   duck.info();
