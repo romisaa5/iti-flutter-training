@@ -42,7 +42,6 @@ void main() {
   bird.printFlySpeed();
 }
 
-// Parent Class
 class Animal {
   String name;
 
@@ -53,7 +52,6 @@ class Animal {
   }
 }
 
-// Mixin Fly
 mixin Fly {
   int flySpeed = 50;
 
@@ -66,7 +64,6 @@ mixin Fly {
   }
 }
 
-// Mixin Swim
 mixin Swim {
   int swimSpeed = 10;
 
@@ -79,7 +76,6 @@ mixin Swim {
   }
 }
 
-// Duck uses both Fly and Swim
 class Duck extends Animal with Fly, Swim {
   Duck(String name, int flySpeed, int swimSpeed) : super(name) {
     this.flySpeed = flySpeed;
@@ -87,14 +83,12 @@ class Duck extends Animal with Fly, Swim {
   }
 }
 
-// Fish uses Swim only
 class Fish extends Animal with Swim {
   Fish(String name, int swimSpeed) : super(name) {
     this.swimSpeed = swimSpeed;
   }
 }
 
-// Bird uses Fly only
 class Bird extends Animal with Fly {
   Bird(String name, int flySpeed) : super(name) {
     this.flySpeed = flySpeed;
