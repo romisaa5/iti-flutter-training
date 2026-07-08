@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:store_app/features/cart/screens/cart_screen.dart';
 import 'package:store_app/features/categories/screens/categories_screen.dart';
 import 'package:store_app/features/home/screens/home_screen.dart';
+import 'package:store_app/features/profile/screens/orders_screen.dart';
+import 'package:store_app/features/profile/screens/profile_screen.dart';
 
 class CustomNavBar extends StatefulWidget {
   const CustomNavBar({super.key});
@@ -15,8 +17,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
     HomeScreen(),
     CategoriesScreen(),
     CartScreen(),
-    Center(child: Text('Favorites Page')),
-    Center(child: Text('Profile Page')),
+    OrdersScreen(),
+    ProfileScreen(),
   ];
   int _currentIndex = 0;
 
