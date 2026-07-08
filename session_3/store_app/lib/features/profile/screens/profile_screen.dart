@@ -65,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: 'Notifications',
                 trailing: Switch(
                   value: _notificationsOn,
-                  activeColor: Colors.white,
+                  activeThumbColor: Colors.white,
                   activeTrackColor: const Color(0xFFFF7A1A),
                   onChanged: (value) =>
                       setState(() => _notificationsOn = value),
@@ -79,7 +79,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: const [
                     Text(
                       'English',
-                      style: TextStyle(fontSize: 14, color: Color(0xFF9E9E9E)),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: AppColors.textPrimary,
+                      ),
                     ),
                     Icon(
                       Icons.chevron_right,

@@ -41,9 +41,9 @@ class ProfileMenuItem extends StatelessWidget {
             ),
             trailing ??
                 (showChevronByDefault
-                    ? const Icon(
+                    ? Icon(
                         Icons.chevron_right,
-                        color: Color(0xFFBDBDBD),
+                        color: AppColors.primary,
                         size: 20,
                       )
                     : const SizedBox.shrink()),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/core/style/app_colors.dart';
 import '../models/order_model.dart';
 
 class OrderItemTile extends StatelessWidget {
@@ -48,10 +49,10 @@ class OrderItemTile extends StatelessWidget {
                 children: [
                   Text(
                     'Order #${order.id}',
-                    style: const TextStyle(
-                      fontSize: 15,
+                    style: TextStyle(
+                      fontSize: 18,
                       fontWeight: FontWeight.w700,
-                      color: darkText,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -66,9 +67,9 @@ class OrderItemTile extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     order.date,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF9E9E9E),
+                      color: AppColors.textPrimary.withValues(alpha: .8),
                     ),
                   ),
                 ],

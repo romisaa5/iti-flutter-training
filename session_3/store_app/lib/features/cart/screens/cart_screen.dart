@@ -61,48 +61,35 @@ class _CartScreenState extends State<CartScreen> {
     setState(() => _items.removeWhere((i) => i.id == item.id));
   }
 
-  void _checkout() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text('Proceeding to checkout…')));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: AppButton(text: 'Checkout', onTap: () {}),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: CartHeader(onBack: () => Navigator.maybePop(context)),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemCount: _items.length,
-                    itemBuilder: (context, index) {
-                      final item = _items[index];
-                      return CartItemTile(
-                        item: item,
-                        onIncrement: () => _increment(item),
-                        onDecrement: () => _decrement(item),
-                        onDelete: () => _delete(item),
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(height: 90),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: CartHeader(onBack: () => Navigator.maybePop(context)),
             ),
-            Positioned(
-              left: 20,
-              right: 20,
-              bottom: 24,
-              child: AppButton(text: 'Checkout', onTap: _checkout),
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                itemCount: _items.length,
+                itemBuilder: (context, index) {
+                  final item = _items[index];
+                  return CartItemTile(
+                    item: item,
+                    onIncrement: () => _increment(item),
+                    onDecrement: () => _decrement(item),
+                    onDelete: () => _delete(item),
+                  );
+                },
+              ),
             ),
           ],
         ),
