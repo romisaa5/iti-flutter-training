@@ -32,15 +32,15 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width ?? 270.w,
-      height: hight ?? 65.h,
+      width: width ?? double.infinity,
+      height: hight ?? 50.h,
       child: ElevatedButton(
         onPressed: isLoading ? null : onTap,
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-          backgroundColor: color ?? LightAppColors.secondary800,
+          backgroundColor: color ?? LightAppColors.primary600,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(60.r),
+            borderRadius: BorderRadius.circular(10.r),
           ),
         ),
         child: isLoading

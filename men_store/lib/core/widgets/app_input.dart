@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:men_store/core/helpers/extensions.dart';
 import 'package:men_store/core/theme/app_colors/light_app_colors.dart';
 import 'package:men_store/core/theme/app_texts/app_text_styles.dart';
 
 class AppInput extends StatefulWidget {
   final String? labelText;
+  final String? hintText;
   final bool? isObscureText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
@@ -34,6 +36,7 @@ class AppInput extends StatefulWidget {
     this.isBorder = true,
     this.onFieldSubmitted,
     this.inputFormatters,
+    this.hintText,
   });
 
   @override
@@ -54,7 +57,7 @@ class _AppInputState extends State<AppInput> {
     final colorScheme = Theme.of(context).colorScheme;
 
     InputBorder border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
+      borderRadius: BorderRadius.circular(10.r),
       borderSide: BorderSide(
         color: widget.isBorder
             ? LightAppColors.grey600.withValues(alpha: .4)
@@ -70,6 +73,13 @@ class _AppInputState extends State<AppInput> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              widget.labelText ?? "",
+              style: AppTextStyles.font14SemiBold.copyWith(
+                color: LightAppColors.grey900,
+              ),
+            ),
+            6.h.ph,
             TextFormField(
               inputFormatters: widget.inputFormatters,
               onFieldSubmitted: widget.onFieldSubmitted,
@@ -94,7 +104,7 @@ class _AppInputState extends State<AppInput> {
                 focusedBorder: border.copyWith(
                   borderSide: BorderSide(
                     color: widget.isBorder
-                        ? LightAppColors.secondary800
+                        ? LightAppColors.primary600
                         : Colors.transparent,
                     width: 1.5.w,
                   ),
@@ -113,8 +123,8 @@ class _AppInputState extends State<AppInput> {
                   ),
                 ),
 
-                labelText: widget.labelText,
-                labelStyle: AppTextStyles.font14Regular.copyWith(
+                hintText: widget.hintText,
+                hintStyle: AppTextStyles.font14Regular.copyWith(
                   color: LightAppColors.grey500,
                 ),
                 suffixIcon: widget.isObscureText == true

@@ -12,17 +12,6 @@ class LightAppColors {
   static const Color primary800 = Color(0xFF434C6D);
   static const Color primary900 = Color(0xFF2F354C);
 
-  // ---------- Secondary ----------
-  static const Color secondary100 = Color(0xFFFCE6EA);
-  static const Color secondary200 = Color(0xFFF7C2CB);
-  static const Color secondary300 = Color(0xFFF19EAD);
-  static const Color secondary400 = Color(0xFFEB7A8E);
-  static const Color secondary500 = Color(0xFFE3657B);
-  static const Color secondary600 = Color(0xFFDC5F76);
-  static const Color secondary700 = Color(0xFFD85E73);
-  static const Color secondary800 = Color(0xFFD75D72);
-  static const Color secondary900 = Color(0xFFB5485B);
-
   // ---------- Neutral ----------
   static const Color neutral900 = Color(0xFF1A1A1A);
   static const Color neutral800 = Color(0xFF333333);
@@ -38,7 +27,7 @@ class LightAppColors {
   static const Color grey900 = Color(0xFF011308);
   static const Color grey800 = Color(0xFF424242);
   static const Color grey700 = Color(0xFF616161);
-  static const Color grey600 = Color(0xFF5A6690);
+  static const Color grey600 = Color(0xFFE6E6E6);
   static const Color grey500 = Color(0xFF8E8EA9);
   static const Color grey400 = Color(0xFFBDBDBD);
   static const Color grey300 = Color(0xFFE0E0E0);

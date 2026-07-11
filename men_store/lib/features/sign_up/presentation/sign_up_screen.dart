@@ -8,24 +8,28 @@ import 'package:men_store/core/theme/app_texts/app_text_styles.dart';
 import 'package:men_store/core/widgets/app_button.dart';
 import 'package:men_store/core/widgets/app_input.dart';
 import 'package:men_store/core/widgets/auth_rich_text.dart';
-import 'package:men_store/features/sign_up/presentation/sign_up_screen.dart';
+import 'package:men_store/features/login/presentation/screens/login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  final _fullNameController = TextEditingController();
+  final _userNameController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _fullNameController.dispose();
+    _userNameController.dispose();
     super.dispose();
   }
 
@@ -43,25 +47,32 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 35.h.ph,
                 Text(
-                  'Login to your account',
+                  'Create an account',
                   style: AppTextStyles.font32SemiBold.copyWith(
                     color: LightAppColors.grey900,
                   ),
                 ),
                 5.h.ph,
                 Text(
-                  'It’s great to see you again.',
+                  'Let’s create your account.',
                   style: AppTextStyles.font16Regular.copyWith(
                     color: LightAppColors.grey700,
                   ),
                 ),
                 30.h.ph,
                 AppInput(
-                  hintText: 'Enter your email address',
-                  controller: _emailController,
-                  validator: (value) => AppValidators.email(value),
-                  labelText: 'Email',
-                  keyboardType: TextInputType.emailAddress,
+                  hintText: 'Enter your full name',
+                  controller: _fullNameController,
+                  validator: (value) => AppValidators.name(value),
+                  labelText: 'Full Name',
+                  keyboardType: TextInputType.name,
+                ),
+                20.h.ph,
+                AppInput(
+                  hintText: 'Enter your user name',
+                  controller: _userNameController,
+                  validator: (value) => AppValidators.name(value),
+                  labelText: 'User Name',
                 ),
                 20.h.ph,
                 AppInput(
@@ -71,23 +82,32 @@ class _LoginScreenState extends State<LoginScreen> {
                   labelText: 'Password',
                   isObscureText: true,
                 ),
+                20.h.ph,
+                AppInput(
+                  controller: _confirmPasswordController,
+                  hintText: 'Confirm your password',
+                  validator: (value) => AppValidators.confirmPassword(
+                    value,
+                    _passwordController.text,
+                  ),
+                  labelText: 'Confirm Password',
+                  isObscureText: true,
+                ),
                 55.h.ph,
                 AppButton(
-                  text: 'Sign In',
+                  text: 'Create Account',
                   onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      // Perform login action
-                    }
+                    if (_formKey.currentState!.validate()) {}
                   },
                 ),
-                300.h.ph,
+                100.h.ph,
                 Align(
                   alignment: Alignment.center,
                   child: AuthRichText(
-                    title: "Don't have an account ?  ",
-                    actionText: "Sign Up",
+                    title: "Already have an account? ",
+                    actionText: "Sign In",
                     onTap: () {
-                      AppNavigator.push(SignUpScreen());
+                      AppNavigator.push(LoginScreen());
                     },
                   ),
                 ),
