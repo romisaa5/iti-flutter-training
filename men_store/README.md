@@ -168,7 +168,7 @@ POST /auth/login      → login (email, password) → access_token / refresh_tok
 ## 🚀 Getting Started
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/romisaa5/iti-flutter-training/
 cd men_store
 flutter pub get
 flutter run
