@@ -10,7 +10,7 @@ class DioFactory {
   Future<Dio> createDio() async {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'https://fakestoreapi.com/',
+        baseUrl: 'https://api.escuelajs.co/api/v1/',
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30),
         responseType: ResponseType.json,

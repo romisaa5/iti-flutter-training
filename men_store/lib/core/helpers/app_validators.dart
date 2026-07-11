@@ -41,25 +41,25 @@ class AppValidators {
       return 'Password is required';
     }
 
-    if (!AppRegex.hasMinLength(value)) {
-      return 'Must be at least 8 characters';
-    }
+    // if (!AppRegex.hasMinLength(value)) {
+    //   return 'Must be at least 8 characters';
+    // }
 
-    if (!AppRegex.hasUpperCase(value)) {
-      return 'Must contain uppercase letter';
-    }
+    // if (!AppRegex.hasUpperCase(value)) {
+    //   return 'Must contain uppercase letter';
+    // }
 
-    if (!AppRegex.hasLowerCase(value)) {
-      return 'Must contain lowercase letter';
-    }
+    // if (!AppRegex.hasLowerCase(value)) {
+    //   return 'Must contain lowercase letter';
+    // }
 
-    if (!AppRegex.hasNumber(value)) {
-      return 'Must contain a number';
-    }
+    // if (!AppRegex.hasNumber(value)) {
+    //   return 'Must contain a number';
+    // }
 
-    if (!AppRegex.hasSpecialCharacter(value)) {
-      return 'Must contain special character';
-    }
+    // if (!AppRegex.hasSpecialCharacter(value)) {
+    //   return 'Must contain special character';
+    // }
 
     return null;
   }

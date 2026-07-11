@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:men_store/core/di/service_locater.dart';
 import 'package:men_store/core/helpers/app_navigator.dart';
+import 'package:men_store/core/network/dio_helper.dart';
 import 'package:men_store/core/theme/app_colors/light_theme_data.dart';
 import 'package:men_store/features/login/presentation/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
+  await DioHelper.init();
+  await setupGetIt();
   runApp(MyApp());
 }
 
