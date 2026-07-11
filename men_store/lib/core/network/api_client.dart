@@ -6,4 +6,8 @@ class ApiService {
   Future<Response> login(LoginRequestModel request) async {
     return await DioHelper.post('auth/login', data: request.toJson());
   }
+
+  Future<Response> getProducts() async {
+    return await DioHelper.get('products');
+  }
 }
