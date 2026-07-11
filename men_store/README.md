@@ -1,3 +1,4 @@
+
 # Men Store 🛍️
 
 A Flutter e-commerce app for browsing and shopping men's fashion, electronics, and lifestyle products. Built with a clean, feature-first architecture using **Cubit (flutter_bloc)** for state management and **Dio** for networking.
@@ -190,4 +191,15 @@ Make sure, in `main()` before `runApp()`:
 | Product Details  | Image carousel, description, price, add to cart           |
 
 ---
+## 📱 Screenshots
 
+Below are some of the main screens from the application, showcasing the authentication flow, product discovery, and product details.
+
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/8b77a768-2128-40ee-8211-841745cb6065" alt="Login" width="220"/>
+<img src="https://github.com/user-attachments/assets/dc9231fc-d427-4ef7-a301-31220de74df5" alt="Sign Up" width="220"/>
+<img src="https://github.com/user-attachments/assets/bee777e8-8cc4-4316-8c3f-361d5dc15741" alt="Discover" width="220"/>
+<img src="https://github.com/user-attachments/assets/4f3f69bc-1cdb-4d15-90fc-9cf29618b35e" alt="Product Details" width="220"/>
+
+</div>
