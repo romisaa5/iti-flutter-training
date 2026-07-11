@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/app_colors.dart';
+import 'package:news_app/core/network/api_service.dart';
+import 'package:news_app/core/network/dio_helper.dart';
+import 'package:news_app/features/home/data/repo/home_repo.dart';
 import 'package:news_app/features/home/presentation/screens/details_screen.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_state.dart';
@@ -15,63 +18,67 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: BlocBuilder<HomeCubit, HomeState>(
-          builder: (context, state) {
-            if (state is HomeLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
+    return BlocProvider(
+      create: (_) =>
+          HomeCubit(HomeRepo(HomeApiService(DioHelper.dio)))..getNews(),
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(
+          child: BlocBuilder<HomeCubit, HomeState>(
+            builder: (context, state) {
+              if (state is HomeLoading) {
+                return const Center(child: CircularProgressIndicator());
+              }
 
-            if (state is HomeError) {
-              return Center(child: Text(state.message));
-            }
+              if (state is HomeError) {
+                return Center(child: Text(state.message));
+              }
 
-            if (state is HomeSuccess) {
-              final articles = state.news.articles;
+              if (state is HomeSuccess) {
+                final articles = state.news.articles;
 
-              return ListView(
-                padding: const EdgeInsets.only(bottom: 24),
-                children: [
-                  const CustomTopBar(),
-                  const SizedBox(height: 8),
+                return ListView(
+                  padding: const EdgeInsets.only(bottom: 24),
+                  children: [
+                    const CustomTopBar(),
+                    const SizedBox(height: 8),
 
-                  BreakingNewsSection(),
+                    BreakingNewsSection(),
 
-                  CategoryFilterTabs(onCategorySelected: (category) {}),
+                    CategoryFilterTabs(onCategorySelected: (category) {}),
 
-                  const SectionHeader(title: 'News For You'),
-                  const SizedBox(height: 4),
+                    const SectionHeader(title: 'News For You'),
+                    const SizedBox(height: 4),
 
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: articles.length,
-                      itemBuilder: (context, index) {
-                        final article = articles[index];
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: articles.length,
+                        itemBuilder: (context, index) {
+                          final article = articles[index];
 
-                        return NewsListItem(
-                          article: article,
-                          onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => DetailsScreen(
-                                model: state.news.articles[index + 1],
+                          return NewsListItem(
+                            article: article,
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => DetailsScreen(
+                                  model: state.news.articles[index + 1],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                ],
-              );
-            }
+                  ],
+                );
+              }
 
-            return const SizedBox();
-          },
+              return const SizedBox();
+            },
+          ),
         ),
       ),
     );

@@ -21,8 +21,7 @@ class NewsListItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
-                article.urlToImage ??
-                    'https://www.knoxtntoday.com/wp-content/uploads/2025/02/News-1280x640.jpg',
+                article.urlToImage ?? '',
                 width: 150,
                 height: 90,
                 fit: BoxFit.cover,

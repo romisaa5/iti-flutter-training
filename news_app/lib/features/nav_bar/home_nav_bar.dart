@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/app_colors.dart';
 import 'package:news_app/core/network/api_service.dart';
 import 'package:news_app/core/network/dio_helper.dart';
-import 'package:news_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:news_app/features/home/data/repo/home_repo.dart';
 import 'package:news_app/features/home/presentation/screens/home_screen.dart';
 import 'package:news_app/features/search/presentation/cubit/search_cubit.dart';
@@ -21,39 +20,30 @@ class _HomeNavState extends State<HomeNav> {
   int currentIndex = 0;
   final List<Widget> pages = [
     HomeScreen(),
-    SearchPage(),
+    BlocProvider(
+      create: (_) => SearchCubit(HomeRepo(HomeApiService(DioHelper.dio))),
+      child: SearchPage(),
+    ),
   ]; // Placeholder for the second page
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) =>
-              HomeCubit(HomeRepo(HomeApiService(DioHelper.dio)))..getNews(),
-        ),
-        BlocProvider(
-          create: (_) => SearchCubit(HomeRepo(HomeApiService(DioHelper.dio))),
-        ),
-      ],
+    return Scaffold(
+      body: pages[currentIndex],
 
-      child: Scaffold(
-        body: pages[currentIndex],
-
-        bottomNavigationBar: CurvedNavigationBar(
-          buttonBackgroundColor: AppColors.primaryOrange,
-          color: AppColors.textDark,
-          backgroundColor: AppColors.white,
-          index: currentIndex,
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          items: [
-            Icon(Icons.home, color: AppColors.white, size: 30),
-            Icon(Icons.search, color: AppColors.white, size: 30),
-          ],
-        ),
+      bottomNavigationBar: CurvedNavigationBar(
+        buttonBackgroundColor: AppColors.primaryOrange,
+        color: AppColors.textDark,
+        backgroundColor: AppColors.white,
+        index: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        items: [
+          Icon(Icons.home, color: AppColors.white, size: 30),
+          Icon(Icons.search, color: AppColors.white, size: 30),
+        ],
       ),
     );
   }

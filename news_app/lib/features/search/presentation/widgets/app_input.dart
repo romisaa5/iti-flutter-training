@@ -81,7 +81,7 @@ class _AppInputState extends State<AppInput> {
                 },
               )
             : widget.suffixIcon,
-        fillColor: Color(0xffF3F3F3),
+        fillColor: Colors.white,
         filled: true,
       ),
       style: TextStyle(color: Color(0xff6D3805), fontSize: 16),

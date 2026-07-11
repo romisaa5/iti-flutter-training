@@ -30,12 +30,18 @@ class DetailsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ///======image===============
               ClipRRect(
                 borderRadius: BorderRadiusGeometry.all(Radius.circular(18)),
                 child: Image.network(
                   model.urlToImage ??
                       'https://cdn.pixabay.com/photo/2017/06/26/19/03/news-2444778_1280.jpg',
+
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.network(
+                      'https://cdn.pixabay.com/photo/2017/06/26/19/03/news-2444778_1280.jpg',
+                      fit: BoxFit.cover,
+                    );
+                  },
                 ),
               ),
               SizedBox(height: 12),

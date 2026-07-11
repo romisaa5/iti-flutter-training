@@ -10,7 +10,7 @@ class HomeApiService {
       'top-headlines',
       queryParameters: {
         'country': 'us',
-        'apiKey': '0b5c8b08d3574e0594e70a2112049440',
+        'apiKey': '6a2bfa8471a048ddab606150547fe945',
       },
     );
   }
@@ -20,7 +20,7 @@ class HomeApiService {
       'everything',
       queryParameters: {
         'q': query,
-        'apiKey': '0b5c8b08d3574e0594e70a2112049440',
+        'apiKey': '6a2bfa8471a048ddab606150547fe945',
       },
     );
   }
