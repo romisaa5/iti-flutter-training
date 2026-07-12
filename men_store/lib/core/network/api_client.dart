@@ -10,4 +10,10 @@ class ApiService {
   Future<Response> getProducts() async {
     return await DioHelper.get('products');
   }
+
+  Future<Response> getUserCart(int userId) async {
+    final dio = Dio();
+
+    return await dio.get('https://dummyjson.com/carts/user/$userId');
+  }
 }
