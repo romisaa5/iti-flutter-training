@@ -11,10 +11,9 @@ import 'package:men_store/core/theme/app_texts/app_text_styles.dart';
 import 'package:men_store/core/widgets/app_button.dart';
 import 'package:men_store/core/widgets/app_input.dart';
 import 'package:men_store/core/widgets/auth_rich_text.dart';
-import 'package:men_store/features/cart/presentation/screens/cart_screen.dart';
-import 'package:men_store/features/home/presentation/screens/discover_screen.dart';
 import 'package:men_store/features/login/presentation/cubit/login_cubit.dart';
 import 'package:men_store/features/login/presentation/cubit/login_state.dart';
+import 'package:men_store/features/nav_bar/custom_bottom_nav.dart';
 import 'package:men_store/features/sign_up/presentation/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -48,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Login Successfully')),
               );
-              AppNavigator.pushAndRemoveUntil(const CartScreen());
+              AppNavigator.pushAndRemoveUntil(const CustomBottomNav());
             }
 
             if (state is LoginError) {

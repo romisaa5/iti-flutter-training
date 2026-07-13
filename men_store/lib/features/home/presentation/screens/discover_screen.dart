@@ -7,7 +7,6 @@ import 'package:men_store/features/home/presentation/cubit/products_cubit.dart';
 import 'package:men_store/features/home/presentation/widgets/discover_body.dart';
 import 'package:men_store/features/home/presentation/widgets/discover_category_list.dart';
 import 'package:men_store/features/home/presentation/widgets/discover_search_bar.dart';
-import 'package:men_store/features/nav_bar/custom_bottom_nav.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
@@ -42,10 +41,6 @@ class _DiscoverViewState extends State<_DiscoverView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightAppColors.grey0,
-      bottomNavigationBar: CustomBottomNav(
-        currentIndex: currentNavIndex,
-        onTap: (index) => setState(() => currentNavIndex = index),
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),

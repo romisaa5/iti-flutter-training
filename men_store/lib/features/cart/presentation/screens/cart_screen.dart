@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:men_store/core/network/api_client.dart';
 import 'package:men_store/core/theme/app_colors/light_app_colors.dart';
 import 'package:men_store/core/widgets/app_button.dart';
@@ -9,7 +8,6 @@ import 'package:men_store/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:men_store/features/cart/presentation/widgets/cart_app_bar.dart';
 import 'package:men_store/features/cart/presentation/widgets/cart_items_list.dart';
 import 'package:men_store/features/cart/presentation/widgets/cart_summary.dart';
-import 'package:men_store/features/nav_bar/custom_bottom_nav.dart';
 
 class CartScreen extends StatelessWidget {
   final int userId;
@@ -32,12 +30,6 @@ class _CartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightAppColors.grey0,
-      bottomNavigationBar: CustomBottomNav(
-        currentIndex: 1,
-        onTap: (index) {
-          if (index != 1) Navigator.of(context).maybePop();
-        },
-      ),
       body: SafeArea(
         child: Column(
           children: [

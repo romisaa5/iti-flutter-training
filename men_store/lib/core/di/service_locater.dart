@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:men_store/core/network/api_client.dart';
+import 'package:men_store/features/cart/data/repos/cart_repo.dart';
+import 'package:men_store/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:men_store/features/home/data/repo/products_repo.dart';
 import 'package:men_store/features/home/presentation/cubit/products_cubit.dart';
 import 'package:men_store/features/login/data/repos/auth_repository.dart';
@@ -23,4 +25,7 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<ProductsCubit>(
     () => ProductsCubit(getIt<ProductsRepo>()),
   );
+
+  getIt.registerLazySingleton<CartRepo>(() => CartRepo(getIt<ApiService>()));
+  getIt.registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()));
 }
