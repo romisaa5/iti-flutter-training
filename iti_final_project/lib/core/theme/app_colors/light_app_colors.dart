@@ -7,7 +7,7 @@ class LightAppColors {
   static const Color primary300 = Color(0xFFA0A9C6);
   static const Color primary400 = Color(0xFF7E8AB1);
   static const Color primary500 = Color(0xFF65759F);
-  static const Color primary600 = Color(0xFF3669C9);
+  static const Color primary600 = Color(0xFF6055D8);
   static const Color primary700 = Color(0xFF4C577A);
   static const Color primary800 = Color(0xFF434C6D);
   static const Color primary900 = Color(0xFF2F354C);
