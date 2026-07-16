@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iti_final_project/core/theme/app_colors/light_app_colors.dart';
 import 'package:iti_final_project/core/theme/app_texts/app_text_styles.dart';
 import 'package:iti_final_project/features/home/presentation/screens/home_screen.dart';
+import 'package:iti_final_project/features/profile/screens/profile_screen.dart';
 
 class CustomBottomNav extends StatefulWidget {
   const CustomBottomNav({super.key});
@@ -13,7 +14,11 @@ class CustomBottomNav extends StatefulWidget {
 class _CustomBottomNavState extends State<CustomBottomNav> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = [HomeScreen(), Container(), Container()];
+  final List<Widget> _screens = [
+    HomeScreen(),
+    Container(),
+    ProfileScreen(userName: ' Romisaa Fadel'),
+  ];
 
   final List<({IconData icon, String label})> _items = const [
     (icon: Icons.home_rounded, label: 'Home'),

@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iti_final_project/core/di/service_locater.dart';
+import 'package:iti_final_project/core/helpers/app_navigator.dart';
 import 'package:iti_final_project/core/helpers/app_validators.dart';
 import 'package:iti_final_project/core/helpers/extensions.dart';
 import 'package:iti_final_project/core/network/token_storage.dart';
-import 'package:iti_final_project/core/theme/app_colors/light_app_colors.dart';
-import 'package:iti_final_project/core/theme/app_texts/app_text_styles.dart';
 import 'package:iti_final_project/core/widgets/app_button.dart';
 import 'package:iti_final_project/core/widgets/app_input.dart';
 import 'package:iti_final_project/core/widgets/auth_rich_text.dart';
+import 'package:iti_final_project/features/home/presentation/widgets/home_banner.dart';
 import 'package:iti_final_project/features/login/presentation/cubit/login_cubit.dart';
 import 'package:iti_final_project/features/login/presentation/cubit/login_state.dart';
+import 'package:iti_final_project/features/nav_bar/custom_bottom_nav.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Login Successfully')),
               );
-              // AppNavigator.pushAndRemoveUntil(const CustomBottomNav());
+              AppNavigator.pushAndRemoveUntil(const CustomBottomNav());
             }
 
             if (state is LoginError) {
@@ -63,18 +64,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      35.h.ph,
-                      Text(
-                        'Login to your account',
-                        style: AppTextStyles.font32SemiBold.copyWith(
-                          color: LightAppColors.grey900,
-                        ),
-                      ),
-                      5.h.ph,
-                      Text(
-                        'It’s great to see you again.',
-                        style: AppTextStyles.font16Regular.copyWith(
-                          color: LightAppColors.grey700,
+                      80.h.ph,
+                      BannerCard(
+                        data: HomeBannerData(
+                          title: 'Get Winter Discount',
+                          subtitle: ' 20% Of For Chidern',
+                          imageUrl: 'assets/images/app_image.png',
                         ),
                       ),
                       30.h.ph,

@@ -4,7 +4,8 @@ import 'package:iti_final_project/core/di/service_locater.dart';
 import 'package:iti_final_project/core/helpers/app_navigator.dart';
 import 'package:iti_final_project/core/network/dio_helper.dart';
 import 'package:iti_final_project/core/theme/app_colors/light_theme_data.dart';
-import 'package:iti_final_project/features/nav_bar/custom_bottom_nav.dart';
+import 'package:iti_final_project/features/login/presentation/screens/login_screen.dart';
+import 'package:iti_final_project/features/splash/presentation/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           navigatorKey: AppNavigator.navigatorKey,
-          home: CustomBottomNav(),
+          home: const SplashScreen(),
           debugShowCheckedModeBanner: false,
           theme: getLightTheme(context),
         );

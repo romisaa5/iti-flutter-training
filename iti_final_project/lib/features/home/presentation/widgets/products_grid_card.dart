@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iti_final_project/core/theme/app_colors/light_app_colors.dart';
 import 'package:iti_final_project/core/theme/app_texts/app_text_styles.dart';
-import 'package:iti_final_project/features/home/data/models/product_model.dart';
 
 class ProductGridCard extends StatefulWidget {
-  final ProductModel product;
+  final dynamic product;
   final VoidCallback onTap;
 
   const ProductGridCard({
@@ -44,7 +43,7 @@ class _ProductGridCardState extends State<ProductGridCard> {
                   child: Container(
                     color: LightAppColors.grey100,
                     child: Image.network(
-                      widget.product.thumbnailUrl,
+                      widget.product.thumbnailUrl ?? '',
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) => Icon(
                         Icons.image_not_supported_outlined,

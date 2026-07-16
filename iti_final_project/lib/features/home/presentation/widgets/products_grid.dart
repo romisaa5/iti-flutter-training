@@ -3,7 +3,8 @@ import 'package:iti_final_project/features/home/data/models/product_model.dart';
 import 'package:iti_final_project/features/home/presentation/widgets/products_grid_card.dart';
 
 class ProductsGrid extends StatelessWidget {
-  final List<ProductModel> products;
+  final List<dynamic> products;
+
   final ValueChanged<ProductModel> onProductTap;
 
   const ProductsGrid({

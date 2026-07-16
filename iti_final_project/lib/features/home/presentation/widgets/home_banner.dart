@@ -61,7 +61,7 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
             controller: _controller,
             itemCount: banners.length,
             onPageChanged: (index) => setState(() => _currentPage = index),
-            itemBuilder: (context, index) => _BannerCard(data: banners[index]),
+            itemBuilder: (context, index) => BannerCard(data: banners[index]),
           ),
         ),
         const SizedBox(height: 10),
@@ -88,10 +88,10 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
   }
 }
 
-class _BannerCard extends StatelessWidget {
+class BannerCard extends StatelessWidget {
   final HomeBannerData data;
 
-  const _BannerCard({required this.data});
+  const BannerCard({required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +128,8 @@ class _BannerCard extends StatelessWidget {
                 ),
                 Image.asset(
                   data.imageUrl,
+                  width: 90,
+                  height: 100,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) =>
                       const SizedBox(width: 90, height: 100),

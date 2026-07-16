@@ -12,6 +12,11 @@ class TokenStorage {
     return await _storage.read(key: _tokenKey);
   }
 
+  static Future<bool> isLoggedIn() async {
+    final token = await getToken();
+    return token != null && token.isNotEmpty;
+  }
+
   static Future<void> deleteToken() async {
     await _storage.delete(key: _tokenKey);
   }

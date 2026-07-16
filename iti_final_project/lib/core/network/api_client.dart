@@ -10,4 +10,12 @@ class ApiService {
   Future<Response> getProducts() async {
     return await DioHelper.get('products');
   }
+
+  Future<Response> searchProducts(String query) async {
+    final dio = Dio();
+    return await dio.get(
+      'https://dummyjson.com/products/search',
+      queryParameters: {'q': query},
+    );
+  }
 }

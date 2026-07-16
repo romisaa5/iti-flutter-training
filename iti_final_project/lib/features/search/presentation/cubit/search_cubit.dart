@@ -1,44 +1,50 @@
-// import 'dart:async';
+import 'dart:async';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iti_final_project/features/home/data/repo/products_repo.dart';
+import 'package:iti_final_project/features/search/presentation/cubit/search_state.dart';
 
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:iti_final_project/features/home/data/repo/products_repo.dart';
+class SearchCubit extends Cubit<SearchState> {
+  final ProductsRepo productsRepo;
 
-// part 'search_state.dart';
+  SearchCubit(this.productsRepo) : super(const SearchIdle());
 
-// class SearchCubit extends Cubit<SearchState> {
-//   final ProductsRepo productsRepo;
+  Timer? _debounce;
 
-//   SearchCubit(this.productsRepo) : super(const SearchIdle());
+  void onQueryChanged(String query) {
+    _debounce?.cancel();
 
-//   Timer? _debounce;
-//   void onQueryChanged(String query) {
-//     _debounce?.cancel();
+    if (query.trim().isEmpty) {
+      emit(const SearchIdle());
+      return;
+    }
 
-//     if (query.trim().isEmpty) {
-//       emit(const SearchIdle());
-//       return;
-//     }
+    _debounce = Timer(const Duration(milliseconds: 400), () {
+      search(query);
+    });
+  }
 
-//     _debounce = Timer(const Duration(milliseconds: 400), () {
-//       search(query);
-//     });
-//   }
+  Future<void> search(String query) async {
+    final trimmed = query.trim();
 
-//   Future<void> search(String query) async {
-//     final trimmed = query.trim();
-//     if (trimmed.isEmpty) {
-//       emit(const SearchIdle());
-//       return;
-//     }
+    if (trimmed.isEmpty) {
+      emit(const SearchIdle());
+      return;
+    }
 
-//     emit(SearchLoading(trimmed));
-//     final result = await productsRepo.getProducts();
-//     return result;
-//   }
+    emit(SearchLoading(trimmed));
 
-//   @override
-//   Future<void> close() {
-//     _debounce?.cancel();
-//     return super.close();
-//   }
-// }
+    try {
+      final products = await productsRepo.searchProducts(trimmed);
+
+      emit(SearchLoaded(query: trimmed, results: products));
+    } catch (e) {
+      emit(SearchFailure(query: trimmed, message: e.toString()));
+    }
+  }
+
+  @override
+  Future<void> close() {
+    _debounce?.cancel();
+    return super.close();
+  }
+}

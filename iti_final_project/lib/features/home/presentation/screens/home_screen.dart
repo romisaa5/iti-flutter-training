@@ -6,6 +6,7 @@ import 'package:iti_final_project/features/home/data/models/product_model.dart';
 import 'package:iti_final_project/features/home/presentation/cubit/products_cubit.dart';
 import 'package:iti_final_project/features/home/presentation/screens/product_details_screen.dart';
 import 'package:iti_final_project/features/home/presentation/screens/products_list_screen.dart';
+import 'package:iti_final_project/features/home/presentation/screens/search_screen.dart';
 import 'package:iti_final_project/features/home/presentation/widgets/home_banner.dart';
 import 'package:iti_final_project/features/home/presentation/widgets/home_error_view.dart';
 import 'package:iti_final_project/features/home/presentation/widgets/home_header.dart';
@@ -43,9 +44,9 @@ class _HomeViewState extends State<_HomeView> {
   }
 
   void _openSearch() {
-    // Navigator.of(
-    //   context,
-    // ).push(MaterialPageRoute(builder: (_) => const SearchScreen()));
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const SearchScreen()));
   }
 
   void _openAllProducts(List<ProductModel> allProducts) {
