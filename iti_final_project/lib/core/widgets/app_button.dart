@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iti_final_project/core/helpers/extensions.dart';
+import 'package:iti_final_project/core/theme/app_colors/light_app_colors.dart';
+import 'package:iti_final_project/core/theme/app_texts/app_text_styles.dart';
+import 'package:iti_final_project/core/widgets/app_images.dart';
+
+class AppButton extends StatelessWidget {
+  const AppButton({
+    super.key,
+    required this.text,
+    this.color,
+    this.onTap,
+    this.width,
+    this.isIcon = false,
+    this.hight,
+    this.icon,
+    this.iconColor,
+    this.isLoading = false,
+  });
+
+  final String text;
+  final Color? color;
+  final double? width;
+  final void Function()? onTap;
+  final bool isIcon;
+  final double? hight;
+  final String? icon;
+  final ColorFilter? iconColor;
+  final bool isLoading;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width ?? double.infinity,
+      height: hight ?? 50.h,
+      child: ElevatedButton(
+        onPressed: isLoading ? null : onTap,
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+          backgroundColor: color ?? LightAppColors.primary600,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+        ),
+        child: isLoading
+            ? Center(
+                child: SizedBox(
+                  height: 24.h,
+                  width: 24.h,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 2,
+                  ),
+                ),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (isIcon == true) ...[
+                    AppImages(imagePath: icon!, colorFilter: iconColor),
+                    8.w.pw,
+                  ],
+                  Text(
+                    text,
+                    style: AppTextStyles.font14SemiBold.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+      ),
+    );
+  }
+}
